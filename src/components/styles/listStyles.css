@@ -1,0 +1,71 @@
+.invoices-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .invoices-container h1 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    display: inline-block;
+  }
+  
+  .add-invoice-button {
+    font-size: 16px;
+    padding: 8px 12px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 0 auto 20px;
+    display: block;
+  }
+  
+  .add-invoice-button:hover {
+    background-color: #0062cc;
+  }
+  
+  .invoices-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .invoices-table th,
+  .invoices-table td {
+    padding: 12px;
+    text-align: left;
+  }
+  
+  .invoices-table th {
+    background-color: #f7f7f7;
+    font-weight: bold;
+  }
+  
+  .invoices-table td {
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .edit-invoice-button,
+  .delete-invoice-button,
+  .copy-invoice-button {
+    font-size: 16px;
+    padding: 8px 12px;
+    background-color: #fff;
+    color: #007bff;
+    border: 1px solid #007bff;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+  
+  .edit-invoice-button:hover,
+  .delete-invoice-button:hover,
+  .copy-invoice-button:hover {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
