@@ -1,31 +1,64 @@
-# Create React App
+# Invoice App
 
-This directory is a brief example of a [Create React App](https://github.com/facebook/create-react-app) site that can be deployed to Vercel with zero configuration.
+This app allows you to manage invoices by adding, editing, deleting, and copying them. It also includes a list of all invoices and allows you to edit specific invoices as well as copy them as a boilerplate for a new invoice.
 
-## Deploy Your Own
+## Changes Made
 
-Deploy your own Create React App project with Vercel.
+The following changes were made to the app:
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/vercel/vercel/tree/main/examples/create-react-app&template=create-react-app)
+1. **Added Redux using Slice with reducers `addInvoice`, `editInvoice`, and `deleteInvoice` to implement add, edit, delete, and copy functionality** : The app now uses Redux with Slice to manage the state and implement CRUD operations for invoices. The `addInvoice` reducer adds a new invoice to the list, `editInvoice` updates an existing invoice, `deleteInvoice` removes an invoice from the list, and `copyInvoice` creates a new invoice based on an existing one.
+2. **Added routes to app with specific ID while editing, homepage as a list of invoices** : The app now includes routes to navigate to different pages. When editing an invoice, the app uses a dynamic route that includes the invoice ID. The homepage displays a list of all invoices, and you can click on an invoice to view its details or edit it.
 
-_Live Example: https://create-react-template.vercel.app/_
+## Changes in Files
 
-## Available Scripts
+1. redux/InvoiceSlice.js
 
-In the project directory, you can run:
+   * The `InvoiceSlice.js` file defines a Redux slice for the list of invoices, with reducers for adding, editing, and deleting an invoice and defines an intial state for the list of invoices.
+2. App.js
 
-### `npm start`
+   * The `App.js` file now contains routes for the homepage and editing an invoice based on its id.
+3. Index.js
 
-Runs the app in the development mode. Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+   * As the entry point of the app This `index.js` file now contains setup for the Redux store using the `Provider` component and renders the `App` component.
+4. store.js
 
-The page will reload when you make changes. You may also see any lint errors in the console.
+   * The `store.js` file creates a Redux store using the `configureStore` function from the `@reduxjs/toolkit` package. It imports the `InvoiceSlice` reducer from `./redux/InvoiceSlice`, and sets it as the reducer for the `invoices` state.
+5. withRouter.js
 
-### `npm test`
+   * This `withRouter.js` file exports a higher-order component called `withRouter` that takes a component as an argument and returns a new component that has access to the `useNavigate` and `useLocation` hooks from `react-router-dom`.
+   * This higher-order component is used to pass the `navigate` and `location` props to the wrapped component, which can be useful for handling navigation and retrieving information about the current URL path.
+   * This implementation was needed because in version 6 of `react-router-dom`, there is no `withRouter` higher-order component for class components, so this file was created to provide similar functionality.
+6. components/InvoiceForm.js
 
-Launches the test runner in the interactive watch mode. See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+   * To use Functionality of Routing and Redux , first wrapped the component with connect and withRouter.
+   * Made the invoiceNumber as the identifying id for invoice in the list of invoices and made it's component from formcontrol to a non-editable div component
+   * Using location from routes and it's state , deciding if it is add mode , edit mode or copy mode using simple if else.
+7. components/InvoiceModal.js
 
-### `npm run build`
+   * To use Functionality of Routing and Redux , first wrapped the component with `connect` and `withRouter`.
+   * Made the Button of Save Invoice to be the deciding factor between add or edit and used basic if else for deciding between add and edit
+8. components/InvoiceList.js
 
-Builds the app for production to the `build` folder.
+   * This component renders a table with headers for the invoice number, date of issue, bill
+     to, bill from, and actions. Each row in the table displays the
+     corresponding invoice data and provides buttons to edit, copy, or delete
+     the invoice.
+   * Functionalities for add, edit and copy are implemented using the component of InvoiceForm and routing taking the use of  `this.props.location.state` and  `copymode:boolean` .
+9. components/styles/listStyles.css
 
-It correctly bundles React in production mode and optimizes the build for the best performance. The build is minified and the filenames include the hashes.
+   * contains css styling for the page `component/InvoiceList.js`
+
+## Usage
+
+Once the app is running, you can perform the following actions:
+
+* **Add a new invoice** : Click on the "Add Invoice" button on the homepage, fill in the required fields, and click "Save".
+* **Edit an invoice** : Click on an invoice in the list on the homepage to view its details, then click on the "Edit" button and make the desired changes. Click "Save" to update the invoice.
+* **Copy an invoice** : Click on an invoice in the list on the homepage to view its details, then click on the "Copy" button. This will create a new invoice based on the existing one, with a unique ID.
+* **Delete an invoice** : Click on an invoice in the list on the homepage to view its details, then click on the "Delete" button. This will remove the invoice from the list.
+
+## Technologies Used for the Change
+
+* React
+* Redux with Slice
+* React Rout
