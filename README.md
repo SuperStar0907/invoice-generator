@@ -1,4 +1,5 @@
-# Invoice App
+# Invoice App  [Hosted Website](https://invoice-generator-ruby.vercel.app)
+<img width="1280" alt="Screenshot 2023-07-21 at 5 08 12 PM" src="https://github.com/SuperStar0907/invoice-generator/assets/74975220/ab3cc010-6d6f-48db-be46-10b3db1895e0">
 
 This app allows you to manage invoices by adding, editing, deleting, and copying them. It also includes a list of all invoices and allows you to edit specific invoices as well as copy them as a boilerplate for a new invoice.
 
